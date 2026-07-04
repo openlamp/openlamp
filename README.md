@@ -30,7 +30,7 @@ Each layer lives in its own repo so no layer is impacted by the others.
 |---|---|---|---|
 | [openlamp-engine](https://github.com/Beennnn/openlamp-engine) | core: drivers, [OpenLamp State](https://github.com/Beennnn/openlamp-engine/blob/main/OLS.md) contract, local API, headless daemon, CLI | nothing | every frontend below |
 | [lumideck](https://github.com/Beennnn/lumideck) | Stream Deck plugin (embeds the engine in-process) | openlamp-engine | Stream Deck owners |
-| [openlamp-midi](https://github.com/Beennnn/openlamp-midi) | MIDI overlay (virtual port → engine API) | openlamp-engine (its `/cmd` API) | musicians with physical MIDI controllers on stage |
+| [openlamp-midi](https://github.com/Beennnn/openlamp-midi) | MIDI overlay (virtual port → engine API) | openlamp-engine (its `/cmd` API) | musicians with physical MIDI controllers on stage (Hotone Ampero Control, Behringer FCB1010, Launchpad, nanoKONTROL2…) |
 
 The WLED-compat endpoint (`/json/state`) ships inside the engine's local API —
 it lets WLED-aware tools drive Tuya lamps; no frontend depends on it.
