@@ -29,6 +29,7 @@ Each layer lives in its own repo so no layer is impacted by the others.
 | Repo | Layer | Depends on | For whom |
 |---|---|---|---|
 | [openlamp-engine](https://github.com/openlamp/engine) | core: drivers, [OpenLamp State](https://github.com/openlamp/engine/blob/main/OLS.md) contract, local API, headless daemon, CLI | nothing | every frontend below |
+| [engine-js](https://github.com/openlamp/engine-js) | Node.js port of the engine (same contract, interchangeable behind the API) | — | JS-first environments (npm/Stream Deck SDK stacks) |
 | [lumideck](https://github.com/openlamp/lumideck) | Stream Deck plugin (embeds the engine in-process) | openlamp-engine | Stream Deck owners |
 | [openlamp-midi](https://github.com/openlamp/midi) | MIDI overlay (virtual port → engine API) | openlamp-engine (its `/cmd` API) | musicians with physical MIDI controllers on stage (Hotone Ampero Control, Behringer FCB1010, Launchpad, nanoKONTROL2…) |
 
