@@ -11,6 +11,8 @@ controller or the command line, with sub-200 ms response and zero cloud at runti
 
 Made by **BenLab** with the help of Claude.
 
+📍 **[Public roadmap](https://github.com/orgs/openlamp/projects/1)** — what's Now / Next / Later, and where help is wanted.
+
 ## The family — one repo per layer
 
 Each layer lives in its own repo so no layer is impacted by the others.
