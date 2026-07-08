@@ -1,4 +1,9 @@
-# OpenLamp
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-wordmark-dark.svg">
+    <img src="assets/logo-wordmark-light.svg" alt="OpenLamp — local stage-light control" width="580">
+  </picture>
+</p>
 
 **Instant, 100% local stage-light control for musicians and makers** — drive cheap
 consumer smart LED lamps (Tuya / Smart Life, WLED) from a Stream Deck, a MIDI
