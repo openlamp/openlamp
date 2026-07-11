@@ -6,8 +6,8 @@
 </p>
 
 **Instant, 100% local stage-light control for musicians and makers** — drive cheap
-consumer smart LED lamps (Tuya / Smart Life, WLED) from a Stream Deck, a MIDI
-controller or the command line, with sub-200 ms response and zero cloud at runtime.
+consumer smart LED lamps — **WLED** (recommended) or Tuya / Smart Life — from a Stream Deck, a MIDI
+controller or the command line, with ~45 ms response on WLED and zero cloud at runtime.
 
 Made by **BenLab** with the help of Claude.
 
@@ -19,7 +19,7 @@ Each layer lives in its own repo so no layer is impacted by the others.
 
 ```
                  ┌───────────────────────────┐
-                 │        your lamps         │  Tuya (today) · WLED (testers wanted)
+                 │        your lamps         │  WLED (recommended) · Tuya (supported)
                  └────────────▲──────────────┘
                               │ persistent local connections
                  ┌────────────┴──────────────┐
@@ -41,12 +41,12 @@ Each layer lives in its own repo so no layer is impacted by the others.
 | [openlamp-midi](https://github.com/openlamp/midi) | MIDI overlay (virtual port → engine API) | openlamp-engine (its `/cmd` API) | musicians with physical MIDI controllers on stage (Hotone Ampero Control, Behringer FCB1010, Launchpad, nanoKONTROL2…) |
 
 The WLED-compat endpoint (`/json/state`) ships inside the engine's local API —
-it lets WLED-aware tools drive Tuya lamps; no frontend depends on it.
+it lets any WLED-aware tool drive OpenLamp lamps; no frontend depends on it.
 
 ## One host at a time
 
-A Tuya lamp accepts a **single** local connection and every engine host binds
-port 8377. Run **either** the Stream Deck plugin **or** the headless daemon
+Every engine host binds port 8377 (and a Tuya lamp additionally accepts only
+**one** local connection). Run **either** the Stream Deck plugin **or** the headless daemon
 (`openlamp-engine/daemon.py`), never both:
 - deck sessions → the plugin (Stream Deck app running);
 - CLI / MIDI-only sessions → the daemon (`run-headless.sh`).
