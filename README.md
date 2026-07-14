@@ -15,33 +15,57 @@ Made by **BenLab** with the help of Claude.
 
 ## The family — one repo per layer
 
-Each layer lives in its own repo so no layer is impacted by the others.
+Each layer lives in its own repo so no layer is impacted by the others. **Two
+independent paths reach the lamps** — the **engine** (direct, ~45 ms) and **Home
+Assistant** — and a shared, firmware-independent **asset layer** dresses the UIs on
+both.
 
 ```
-                 ┌───────────────────────────┐
-                 │        your lamps         │  WLED (recommended) · Tuya (supported)
-                 └────────────▲──────────────┘
-                              │ persistent local connections
-                 ┌────────────┴──────────────┐
-                 │      openlamp-engine      │  drivers · OLS dispatcher · groups ·
-                 │  (core + daemon + CLI)    │  snapshots · animations · local API
-                 └───────▲─────────▲─────────┘
-              in-process │         │ local API 127.0.0.1:8377
-                 ┌───────┴───┐ ┌───┴────────────┐
-                 │  lumideck │ │ openlamp-midi  │
-                 │ StreamDeck│ │ MIDI controllers│
-                 └───────────┘ └────────────────┘
+        your lamps   ·   WLED (recommended) / Tuya
+          ▲                              ▲
+          │ direct local API, ~45 ms     │ via Home Assistant
+   ┌──────┴─────────────┐        ┌───────┴────────────────┐
+   │   openlamp-engine  │        │  HA "wled" integration │
+   │   OLS · API :8377  │        └───────┬────────────────┘
+   └──▲──────────▲──────┘                │ entities
+ in-proc│      /cmd│              ┌───────┴────────────┐
+   ┌────┴───┐ ┌────┴───────┐      │   wled-assets-card │
+   │lumideck│ │ openlamp-  │      │   (Lovelace card)  │
+   └───┬────┘ │ midi       │      └───────┬────────────┘
+       │      └────────────┘              │
+       └─────────── consume ──────────────┘
+                        │
+              ┌─────────┴───────────┐
+              │      wled-assets    │  localized names + illustrations (CC0)
+              └─────────────────────┘
 ```
+
+### Core engine
 
 | Repo | Layer | Depends on | For whom |
 |---|---|---|---|
-| [openlamp-engine](https://github.com/openlamp/engine) | core: drivers, [OpenLamp State](https://github.com/openlamp/engine/blob/main/OLS.md) contract, local API, headless daemon, CLI | nothing | every frontend below |
-| [engine-js](https://github.com/openlamp/engine-js) | Node.js port of the engine (same contract, interchangeable behind the API) | — | JS-first environments (npm/Stream Deck SDK stacks) |
-| [lumideck](https://github.com/openlamp/lumideck) | Stream Deck plugin (embeds the engine in-process) | openlamp-engine | Stream Deck owners |
-| [openlamp-midi](https://github.com/openlamp/midi) | MIDI overlay (virtual port → engine API) | openlamp-engine (its `/cmd` API) | musicians with physical MIDI controllers on stage (Hotone Ampero Control, Behringer FCB1010, Launchpad, nanoKONTROL2…) |
+| [openlamp-engine](https://github.com/openlamp/engine) | drivers · [OpenLamp State](https://github.com/openlamp/engine/blob/main/OLS.md) contract · local API · headless daemon · CLI | nothing | every control surface below |
+| [engine-js](https://github.com/openlamp/engine-js) | Node.js port of the engine (same contract, interchangeable behind the API) | — | JS-first stacks (npm / Stream Deck SDK) |
 
-The WLED-compat endpoint (`/json/state`) ships inside the engine's local API —
-it lets any WLED-aware tool drive OpenLamp lamps; no frontend depends on it.
+### Control surfaces
+
+| Repo | Layer | Depends on | For whom |
+|---|---|---|---|
+| [lumideck](https://github.com/openlamp/lumideck) | Stream Deck plugin (embeds the engine in-process) | engine · wled-assets | Stream Deck owners |
+| [openlamp-midi](https://github.com/openlamp/midi) | MIDI overlay (virtual port → engine `/cmd` API) | engine | musicians with physical MIDI controllers (Ampero Control, FCB1010, Launchpad, nanoKONTROL2…) |
+| [wled-assets-card](https://github.com/openlamp/wled-assets-card) | Home Assistant Lovelace card — dresses HA's `wled` light with localized names + illustrations, one-tap apply | HA `wled` integration · wled-assets | Home Assistant users |
+
+### Shared content (firmware-independent — any WLED client can consume it)
+
+| Repo | What | Consumed by |
+|---|---|---|
+| [wled-assets](https://github.com/openlamp/wled-assets) | localized effect/palette names (8 languages) + palette illustrations + effect motion previews — **CC0** | lumideck · wled-assets-card · any WLED client |
+| [streamdeck-wled-icons](https://github.com/Beennnn/streamdeck-wled-icons) | 216 animated effect GIFs + 111 palette/control icons as Stream Deck **Marketplace** packs (under [@Beennnn](https://github.com/Beennnn)) | Stream Deck profile designers |
+
+The WLED-compat endpoint (`/json/state`) ships inside the engine's local API — it
+lets any WLED-aware tool drive OpenLamp lamps; no control surface depends on it. The
+**Home Assistant card is fully independent of the engine**: it rides HA's own WLED
+integration and only shares the `wled-assets` layer with LumiDeck.
 
 ## One host at a time
 
