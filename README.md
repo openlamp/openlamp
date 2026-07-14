@@ -40,11 +40,17 @@ both.
               └─────────────────────┘
 ```
 
+### Convention
+
+| Repo | Layer | Depends on | For whom |
+|---|---|---|---|
+| [wled-midi](https://github.com/openlamp/wled-midi) | the **MIDI↔WLED convention** — notes→colours, CC→brightness/effects, PC→presets, clock/Link→beat (spec only, MIT) | nothing | the engine (implements it), Ableton (emits it), any MIDI tool |
+
 ### Core engine
 
 | Repo | Layer | Depends on | For whom |
 |---|---|---|---|
-| [openlamp-engine](https://github.com/openlamp/engine) | drivers · [OpenLamp State](https://github.com/openlamp/engine/blob/main/OLS.md) contract · local API · headless daemon · CLI | nothing | every control surface below |
+| [openlamp-engine](https://github.com/openlamp/engine) | drivers · [OpenLamp State](https://github.com/openlamp/engine/blob/main/OLS.md) contract · local API · headless daemon · CLI · **MIDI control** (`midi.py`, the wled-midi reference impl) | wled-midi | every control surface below |
 | [engine-js](https://github.com/openlamp/engine-js) | Node.js port of the engine (same contract, interchangeable behind the API) | — | JS-first stacks (npm / Stream Deck SDK) |
 
 ### Control surfaces
@@ -52,7 +58,8 @@ both.
 | Repo | Layer | Depends on | For whom |
 |---|---|---|---|
 | [lumideck](https://github.com/openlamp/lumideck) | Stream Deck plugin (embeds the engine in-process) | engine · wled-assets | Stream Deck owners |
-| [openlamp-midi](https://github.com/openlamp/midi) | MIDI overlay (virtual port → engine `/cmd` API) | engine | musicians with physical MIDI controllers (Ampero Control, FCB1010, Launchpad, nanoKONTROL2…) |
+| [live](https://github.com/openlamp/live) | Ableton Live frontend — emits the wled-midi convention from a Live set | wled-midi · engine | Ableton users driving lamps in time with a set |
+| [openlamp-midi](https://github.com/openlamp/midi) | Ableton Link / tempo-follow (beatsync) — flash on the beat, phase-accurate | engine | musicians syncing lamps to a DAW / Link |
 | [wled-assets-card](https://github.com/openlamp/wled-assets-card) | Home Assistant Lovelace card — dresses HA's `wled` light with localized names + illustrations, one-tap apply | HA `wled` integration · wled-assets | Home Assistant users |
 
 ### Shared content (firmware-independent — any WLED client can consume it)
