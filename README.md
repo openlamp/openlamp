@@ -57,7 +57,7 @@ both.
 
 | Repo | Layer | Depends on | For whom |
 |---|---|---|---|
-| [lumideck](https://github.com/openlamp/lumideck) | Stream Deck plugin (embeds the engine in-process) | engine · wled-assets | Stream Deck owners |
+| **LumiDeck** (commercial) | Stream Deck plugin (embeds the engine in-process) | engine · wled-assets | Stream Deck owners |
 | [live](https://github.com/openlamp/live) | Ableton Live frontend — emits the wled-midi convention from a Live set | wled-midi · engine | Ableton users driving lamps in time with a set |
 | [openlamp-midi](https://github.com/openlamp/midi) | Ableton Link / tempo-follow (beatsync) — flash on the beat, phase-accurate | engine | musicians syncing lamps to a DAW / Link |
 | [wled-assets-card](https://github.com/openlamp/wled-assets-card) | Home Assistant Lovelace card — dresses HA's `wled` light with localized names + illustrations, one-tap apply | HA `wled` integration · wled-assets | Home Assistant users |
