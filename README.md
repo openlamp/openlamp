@@ -30,7 +30,7 @@ both.
    └──▲──────────▲──────┘                │ entities
  in-proc│      /cmd│              ┌───────┴────────────┐
    ┌────┴───┐ ┌────┴───────┐      │   wled-assets-card │
-   │lumideck│ │ openlamp-  │      │   (Lovelace card)  │
+   │frontend│ │ openlamp-  │      │   (Lovelace card)  │
    └───┬────┘ │ midi       │      └───────┬────────────┘
        │      └────────────┘              │
        └─────────── consume ──────────────┘
@@ -57,7 +57,6 @@ both.
 
 | Repo | Layer | Depends on | For whom |
 |---|---|---|---|
-| **LumiDeck** (commercial) | Stream Deck plugin (embeds the engine in-process) | engine · wled-assets | Stream Deck owners |
 | [live](https://github.com/openlamp/live) | Ableton Live frontend — emits the wled-midi convention from a Live set | wled-midi · engine | Ableton users driving lamps in time with a set |
 | [openlamp-midi](https://github.com/openlamp/midi) | Ableton Link / tempo-follow (beatsync) — flash on the beat, phase-accurate | engine | musicians syncing lamps to a DAW / Link |
 | [wled-assets-card](https://github.com/openlamp/wled-assets-card) | Home Assistant Lovelace card — dresses HA's `wled` light with localized names + illustrations, one-tap apply | HA `wled` integration · wled-assets | Home Assistant users |
@@ -66,13 +65,13 @@ both.
 
 | Repo | What | Consumed by |
 |---|---|---|
-| [wled-assets](https://github.com/openlamp/wled-assets) | localized effect/palette names (8 languages) + palette illustrations + effect motion previews — **CC0** | lumideck · wled-assets-card · any WLED client |
+| [wled-assets](https://github.com/openlamp/wled-assets) | localized effect/palette names (8 languages) + palette illustrations + effect motion previews — **CC0** | wled-assets-card · any WLED client |
 | [streamdeck-wled-icons](https://github.com/Beennnn/streamdeck-wled-icons) | 216 animated effect GIFs + 111 palette/control icons as Stream Deck **Marketplace** packs (under [@Beennnn](https://github.com/Beennnn)) | Stream Deck profile designers |
 
 The WLED-compat endpoint (`/json/state`) ships inside the engine's local API — it
 lets any WLED-aware tool drive OpenLamp lamps; no control surface depends on it. The
 **Home Assistant card is fully independent of the engine**: it rides HA's own WLED
-integration and only shares the `wled-assets` layer with LumiDeck.
+integration and only shares the `wled-assets` layer with the other frontends.
 
 ## One host at a time
 
