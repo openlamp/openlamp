@@ -1,9 +1,4 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/logo-wordmark-dark.svg">
-    <img src="assets/logo-wordmark-light.svg" alt="OpenLamp — local stage-light control" width="580">
-  </picture>
-</p>
+<p align="center"><img src="assets/banner.svg" alt="OpenLamp" width="100%"></p>
 
 **Instant, 100% local stage-light control for musicians and makers** — drive cheap
 consumer smart LED lamps — **WLED** (recommended) or Tuya / Smart Life — from a Stream Deck, a MIDI
@@ -107,7 +102,7 @@ independent of the engine**: it rides HA's own WLED integration and only shares 
 | Repo | What it is | Depends on |
 |---|---|---|
 | [lumideck](https://github.com/openlamp/streamdeck-plugin-lumideck) | **PRIVATE** — the Elgato Stream Deck plugin, the one thing sold. Effects, palettes, white/CCT, scenes, auto-discovery, live key rendering. Ships its own **fork** of `engine.py`, which has diverged from the reference engine's | its forked engine |
-| [lumideck-support](https://github.com/openlamp/streamdeck-plugin-lumideck-support) | LumiDeck's public face — product page + issue tracker, so buyers file bugs without the source being open | nothing |
+| [lumideck-support](https://github.com/openlamp/lumideck-support) | LumiDeck's public face — product page + issue tracker, so buyers file bugs without the source being open | nothing |
 
 ### The org itself
 
