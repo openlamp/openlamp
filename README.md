@@ -23,6 +23,8 @@ of the one thing that is sold — the Stream Deck plugin. No other repo is part 
 ### What depends on what
 
 ```
+SPEC        openlamp-spec-state .....  the lamp-state contract (OLS v2.0). WLED's
+                                       JSON state API, extended for cheap lamps
 SPEC        openlamp-spec-midi ......  the MIDI spec. SPEC.md is the ONE place a
                   │                    version is stated; everything else links to it.
                   │ implemented or emitted by
@@ -63,6 +65,7 @@ independent of the engine**: it rides HA's own WLED integration and only shares 
 
 | Repo | What it is | Depends on |
 |---|---|---|
+| [openlamp-spec-state](https://github.com/openlamp/openlamp-spec-state) | the **lamp-state contract** — OLS v2.0 adopts [WLED's JSON state API](https://kno.wled.ge/interfaces/json-api/) rather than inventing a schema, and extends it where cheap consumer lamps need it. Spec only, MIT. Lived inside the engine until 2026-09-20, which made it that engine's documentation rather than a contract | nothing |
 | [openlamp-spec-midi](https://github.com/openlamp/openlamp-spec-midi) | the **MIDI↔WLED spec** — notes→colours, CC→brightness/effects, PC→presets, clock/Link→beat. Spec only, MIT. [SPEC.md](https://github.com/openlamp/openlamp-spec-midi/blob/main/SPEC.md) is the single source of truth for its version; implementers link to it rather than restate a number | nothing |
 
 ### Engines
