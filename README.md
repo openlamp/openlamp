@@ -106,8 +106,8 @@ independent of the engine**: it rides HA's own WLED integration and only shares 
 
 | Repo | What it is | Depends on |
 |---|---|---|
-| [lumideck](https://github.com/openlamp/lumideck) | **PRIVATE** — the Elgato Stream Deck plugin, the one thing sold. Effects, palettes, white/CCT, scenes, auto-discovery, live key rendering. Ships its own **fork** of `engine.py`, which has diverged from the reference engine's | its forked engine |
-| [lumideck-support](https://github.com/openlamp/lumideck-support) | LumiDeck's public face — product page + issue tracker, so buyers file bugs without the source being open | nothing |
+| [lumideck](https://github.com/openlamp/streamdeck-plugin-lumideck) | **PRIVATE** — the Elgato Stream Deck plugin, the one thing sold. Effects, palettes, white/CCT, scenes, auto-discovery, live key rendering. Ships its own **fork** of `engine.py`, which has diverged from the reference engine's | its forked engine |
+| [lumideck-support](https://github.com/openlamp/streamdeck-plugin-lumideck-support) | LumiDeck's public face — product page + issue tracker, so buyers file bugs without the source being open | nothing |
 
 ### The org itself
 
