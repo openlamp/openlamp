@@ -66,7 +66,7 @@ both.
 | Repo | What | Consumed by |
 |---|---|---|
 | [wled-assets](https://github.com/openlamp/wled-assets) | localized effect/palette names (8 languages) + palette illustrations + effect motion previews — **CC0** | wled-assets-card · any WLED client |
-| [streamdeck-wled-icons](https://github.com/Beennnn/streamdeck-wled-icons) | 216 animated effect GIFs + 111 palette/control icons as Stream Deck **Marketplace** packs (under [@Beennnn](https://github.com/Beennnn)) | Stream Deck profile designers |
+| [streamdeck-wled-icons](https://github.com/Beennnn/streamdeck-icons-wled) | 216 animated effect GIFs + 111 palette/control icons as Stream Deck **Marketplace** packs (under [@Beennnn](https://github.com/Beennnn)) | Stream Deck profile designers |
 
 The WLED-compat endpoint (`/json/state`) ships inside the engine's local API — it
 lets any WLED-aware tool drive OpenLamp lamps; no control surface depends on it. The
