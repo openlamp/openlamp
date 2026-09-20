@@ -69,7 +69,7 @@ independent of the engine**: it rides HA's own WLED integration and only shares 
 
 | Repo | What it is | Depends on |
 |---|---|---|
-| [openlamp-engine-python](https://github.com/openlamp/openlamp-engine-python) | the **reference engine** — WLED/Tuya drivers · [OpenLamp State (OLS)](https://github.com/openlamp/openlamp-engine-python/blob/main/OLS.md) · groups · snapshots · animations · local API :8377 · headless daemon · CLI · **MIDI control** (`midi.py`, the spec's reference implementation) | openlamp-spec-midi |
+| [openlamp-engine-python](https://github.com/openlamp/openlamp-engine-python) | the **reference engine** — WLED/Tuya drivers · [OpenLamp State (OLS)](https://github.com/openlamp/openlamp-spec-state) · groups · snapshots · animations · local API :8377 · headless daemon · CLI · **MIDI control** (`midi.py`, the spec's reference implementation) | openlamp-spec-midi |
 | [openlamp-engine-node](https://github.com/openlamp/openlamp-engine-node) | Node.js port of the engine, same OLS, interchangeable behind the local API. **Archived and frozen** — kept readable, not maintained | — |
 
 ### Control surfaces — they emit the spec
